@@ -30,9 +30,9 @@ void main(void)
     int count = 0;
     
     unsigned char rgRawVals[6] = {0, 0, 0, 0, 0, 0};    
-    int valX = 0;
-    int valY = 0;
-    int valZ = 0;
+    signed short valX = 0;
+    signed short valY = 0;
+    signed short valZ = 0;
     
     ACL_Init();   
     
@@ -55,9 +55,27 @@ void main(void)
                 LCD_WriteStringAtPos(stringToSend, 1, 0);
                 
                 ACL_ReadRawValues(rgRawVals);
-                valX = (((unsigned short)rgRawVals[0]) << 4) + (rgRawVals[1] >> 4);
-                valY = (((unsigned short)rgRawVals[2]) << 4) + (rgRawVals[3] >> 4);
-                valZ = (((unsigned short)rgRawVals[4]) << 4) + (rgRawVals[5] >> 4);
+                valX = (((signed short)rgRawVals[0]) << 4) + (rgRawVals[1] >> 4);
+                valY = (((signed short)rgRawVals[2]) << 4) + (rgRawVals[3] >> 4);
+                valZ = (((signed short)rgRawVals[4]) << 4) + (rgRawVals[5] >> 4);           
+                
+                if(valX & 1<<11)
+                {
+                    valX |= (1<<15);
+                    valX &= ~(1<<11);
+                }
+                
+                if(valY & 1<<11)
+                {
+                    valY |= (1<<15);
+                    valY &= ~(1<<11);
+                }
+                
+                if(valZ & 1<<11)
+                {
+                    valZ |= (1<<15);
+                    valZ &= ~(1<<11);
+                }
             }
         }
     }
