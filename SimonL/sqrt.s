@@ -59,6 +59,8 @@ iterate:
     nop
     
     move $v0, $t3
- 
+    jr $ra
+    nop
+    
 .end sqrt_babylon
             

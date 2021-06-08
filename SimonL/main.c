@@ -15,7 +15,7 @@ int Flag_1s = 0;
 
 /*      VARRIABLES GLOBALES     */
 
-extern float sqrt_babylon(float value);
+extern int sqrt_babylon(int value, unsigned int precision);
 
 
 void main(void)
@@ -29,10 +29,11 @@ void main(void)
     char secondes[2] = {0};
     int count = 0;
     
-    float testSqrt = 34.46f;
-    float resultTestSqrt = 0.0f;
+    int testSqrt[10] = {16, 26, 33, 81, 144, 225, 400, 925, 10030, 65535};
+    int resultTestSqrt[10] = {0};
     
-    resultTestSqrt = sqrt_babylon(testSqrt);
+    for(int i = 0; i < 10; i++)
+        resultTestSqrt[i] = sqrt_babylon(testSqrt[i], 1);
     
     // Main loop
     while(1) {
