@@ -15,7 +15,7 @@ int Flag_1s = 0;
 
 /*      VARRIABLES GLOBALES     */
 
-
+extern float sqrt_babylon(float value);
 
 
 void main(void)
@@ -28,6 +28,12 @@ void main(void)
     char minutes[2] = {0};
     char secondes[2] = {0};
     int count = 0;
+    
+    float testSqrt = 34.46f;
+    float resultTestSqrt = 0.0f;
+    
+    resultTestSqrt = sqrt_babylon(testSqrt);
+    
     // Main loop
     while(1) {
         if(Flag_1s)// Flag d'interruption à chaque 1 ms
