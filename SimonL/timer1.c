@@ -7,8 +7,6 @@
 
 #include "S4App3.h"
 
-
-
 extern int Flag_1s;
 
 void Timer1Init(void)
@@ -26,3 +24,5 @@ void Timer1Init(void)
   T1CONbits.ON = 1;                   //    turn on Timer5 
     
 }
+
+

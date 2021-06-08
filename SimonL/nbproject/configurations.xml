@@ -7,6 +7,7 @@
       <itemPath>S4App3.h</itemPath>
       <itemPath>config.h</itemPath>
       <itemPath>led.h</itemPath>
+      <itemPath>lcd.h</itemPath>
     </logicalFolder>
     <logicalFolder name="LinkerScript"
                    displayName="Linker Files"
@@ -18,6 +19,8 @@
       <itemPath>main.c</itemPath>
       <itemPath>timer1.c</itemPath>
       <itemPath>led.c</itemPath>
+      <itemPath>config_bits.c</itemPath>
+      <itemPath>lcd.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -204,6 +207,9 @@
         <property key="save-temps" value="false"/>
         <property key="wpo-lto" value="false"/>
       </C32Global>
+      <PK3OBPlatformTool>
+        <property key="firmware.download.all" value="false"/>
+      </PK3OBPlatformTool>
     </conf>
   </confs>
 </configurationDescriptor>
