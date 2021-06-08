@@ -1,7 +1,7 @@
-# Xavier's repertory
+# Simon's repertory
 
 ## Hi, hello
 
-This is Xavier Dufour's code!
+This is Simon Lefebvre's code!
 
 ### Fonction implemented 
