@@ -17,9 +17,13 @@
  /* t0: initial guess
     t1: division result of S/x0 
     t2: addition result of x0+(S/x0) 
-    t3: division result of (x0+(S/x0))/2 */
+    t3: division result of (x0+(S/x0))/2 
+    t4: substraction result of x_n - x_(n-1) 
+    t5: precision value*/
 .ent sqrt
 sqrt:
+error: .float 0.5
+    lw $t5, error($0)
     div $a0, 2 /* Initial guess = input/2 */
     mflo $t0 
    
@@ -35,9 +39,10 @@ loop:
     
     /* Calcul de la condition de convergence */
     sub $t4, $t0, $t3 /* x_n - x_(n-1) */
-    lw $t0, $t3 /* Assign new iteration value */
-    bge $t4, 0.5, loop /* Loop if x_n - x_(n-1) > E*/
+    move $t0, $t3 /* Assign new iteration value */
+    bge $t4, $t5, loop /* Loop if x_n - x_(n-1) > E */
     
-    lw $v0, $t3
+    move $v0, $t3
  
 .end sqrt
+            
