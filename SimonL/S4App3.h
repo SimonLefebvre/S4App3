@@ -16,8 +16,8 @@
 #include "led.h"
 #include "lcd.h"
 #include "adc.h"
-
-
+#include "spiflash.h"
+#include "uart.h"
 
 void Timer1Init(void);
 
