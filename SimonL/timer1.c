@@ -25,4 +25,9 @@ void Timer1Init(void)
     
 }
 
-
+void __ISR(_TIMER_1_VECTOR, IPL2AUTO) Timer1ISR(void) 
+{  
+   Flag_1s = 1;           //    Indique à la boucle principale qu'on doit traiter
+  
+   IFS0bits.T1IF = 0;     //    clear interrupt flag
+}

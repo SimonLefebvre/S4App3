@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=main.c timer1.c led.c config_bits.c lcd.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c timer1.c led.c config_bits.c lcd.c test.s adc.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/timer1.o ${OBJECTDIR}/led.o ${OBJECTDIR}/config_bits.o ${OBJECTDIR}/lcd.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/timer1.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/config_bits.o.d ${OBJECTDIR}/lcd.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/timer1.o ${OBJECTDIR}/led.o ${OBJECTDIR}/config_bits.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/test.o ${OBJECTDIR}/adc.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/timer1.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/config_bits.o.d ${OBJECTDIR}/lcd.o.d ${OBJECTDIR}/test.o.d ${OBJECTDIR}/adc.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/timer1.o ${OBJECTDIR}/led.o ${OBJECTDIR}/config_bits.o ${OBJECTDIR}/lcd.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/timer1.o ${OBJECTDIR}/led.o ${OBJECTDIR}/config_bits.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/test.o ${OBJECTDIR}/adc.o
 
 # Source Files
-SOURCEFILES=main.c timer1.c led.c config_bits.c lcd.c
+SOURCEFILES=main.c timer1.c led.c config_bits.c lcd.c test.s adc.c
 
 
 
@@ -95,7 +95,17 @@ MP_LINKER_FILE_OPTION=
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
+${OBJECTDIR}/test.o: test.s  .generated_files/1fb6289a8e776b4a889df48562345aec2a4d025a.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/test.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG  -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${OBJECTDIR}/test.o test.s  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,--gdwarf-2,-MD="${OBJECTDIR}/test.o.d" -mdfp="${DFP_DIR}"
+	
 else
+${OBJECTDIR}/test.o: test.s  .generated_files/4e9ef6320b6e9895488c304e2c57aee12bbfc631.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/test.o 
+	${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${OBJECTDIR}/test.o test.s  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),--gdwarf-2,-MD="${OBJECTDIR}/test.o.d" -mdfp="${DFP_DIR}"
+	
 endif
 
 # ------------------------------------------------------------------------------------
@@ -137,6 +147,12 @@ ${OBJECTDIR}/lcd.o: lcd.c  .generated_files/7812d369d4c258ae048d9e08a0a260a811e2
 	@${RM} ${OBJECTDIR}/lcd.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lcd.o.d" -o ${OBJECTDIR}/lcd.o lcd.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
+${OBJECTDIR}/adc.o: adc.c  .generated_files/5e05c8d6f16fff50bbd7f93e75dd94a9d3b701b6.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/adc.o.d 
+	@${RM} ${OBJECTDIR}/adc.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/adc.o.d" -o ${OBJECTDIR}/adc.o adc.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
 else
 ${OBJECTDIR}/main.o: main.c  .generated_files/7f0c4b2ed8b8a2f0b15f1419d6e4166a1bbbef53.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
@@ -167,6 +183,12 @@ ${OBJECTDIR}/lcd.o: lcd.c  .generated_files/eb3d30b6398b0b17662c4883a8a205479286
 	@${RM} ${OBJECTDIR}/lcd.o.d 
 	@${RM} ${OBJECTDIR}/lcd.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lcd.o.d" -o ${OBJECTDIR}/lcd.o lcd.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/adc.o: adc.c  .generated_files/aec96fe815c2e1d9b0e8a281deca39b30d6f2a46.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/adc.o.d 
+	@${RM} ${OBJECTDIR}/adc.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/adc.o.d" -o ${OBJECTDIR}/adc.o adc.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
