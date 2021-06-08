@@ -1,6 +1,6 @@
 # pour que ces etiquettes soient visibles des autres fichiers par le linker
 .global sqrt_babylon
- 
+.global magnitude
     
   /* This is important for an assembly programmer. This
 * directive tells the assembler that don't optimize
@@ -64,3 +64,28 @@ iterate:
     
 .end sqrt_babylon
             
+    
+.ent magnitude
+magnitude:
+    addi $sp, $sp, -4 # reserve word on stack
+    sw $ra, 0($sp)    # save return address
+    
+    mul $a0, $a0, $a0 # ax^2
+    mul $a1, $a1, $a1 # ay^2
+    mul $a2, $a2, $a2 # az^2
+    
+    add $a0, $a0, $a1 # ax^2 + ay^2 + az^2
+    add $a0, $a0, $a2
+    
+    li $a1, 1	      # precision = 1
+     
+    jal sqrt_babylon  # compute square root
+    nop
+    
+    lw $ra, 0($sp)    # restore return address
+    addi $sp, $sp, 4  # release stack memory
+    jr $ra
+    nop
+    
+.end magnitude
+    
