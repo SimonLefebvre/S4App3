@@ -28,6 +28,14 @@ void main(void)
     char minutes[2] = {0};
     char secondes[2] = {0};
     int count = 0;
+    
+    unsigned char rgRawVals[6] = {0, 0, 0, 0, 0, 0};    
+    int valX = 0;
+    int valY = 0;
+    int valZ = 0;
+    
+    ACL_Init();   
+    
     // Main loop
     while(1) {
         if(Flag_1s)// Flag d'interruption à chaque 1 ms
@@ -45,7 +53,13 @@ void main(void)
                 if(heures[0] > 3 && heures[1] > 1){heures[0] = 0; heures[1] =0;}
                 char stringToSend[9] = {heures[1]+48,heures[0]+48,':',minutes[1]+48,minutes[0]+48,':',secondes[1]+48,secondes[0]+48,'\0'};
                 LCD_WriteStringAtPos(stringToSend, 1, 0);
+                
+                ACL_ReadRawValues(rgRawVals);
+                valX = (((unsigned short)rgRawVals[0]) << 4) + (rgRawVals[1] >> 4);
+                valY = (((unsigned short)rgRawVals[2]) << 4) + (rgRawVals[3] >> 4);
+                valZ = (((unsigned short)rgRawVals[4]) << 4) + (rgRawVals[5] >> 4);
             }
         }
     }
+    ACL_Close();
 }

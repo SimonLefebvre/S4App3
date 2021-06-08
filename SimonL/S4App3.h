@@ -17,6 +17,9 @@
 #include "lcd.h"
 #include "adc.h"
 
+#include "acl.h"
+#include "i2c.h"
+
 
 
 void Timer1Init(void);
