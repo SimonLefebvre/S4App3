@@ -13,10 +13,10 @@
 #include <xc.h>
 #include <sys/attribs.h>
 #include "config.h"
+#include "led.h"
 
-
-
-
+void Timer1Init(void);
+//void __ISR(_TIMER_1_VECTOR, IPL2AUTO) Timer1ISR(void);
 
 
 

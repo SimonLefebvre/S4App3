@@ -8,29 +8,9 @@
 #ifndef CONFIG_H
 #define	CONFIG_H
 
-
-#pragma config JTAGEN = OFF     
-#pragma config FWDTEN = OFF      
-
-
-/* ------------------------------------------------------------ */
-/*						Configuration Bits		                */
-/* ------------------------------------------------------------ */
-
-
-// Device Config Bits in  DEVCFG1:	
-#pragma config FNOSC =	FRCPLL
-#pragma config FSOSCEN =	OFF
-#pragma config POSCMOD =	XT
-#pragma config OSCIOFNC =	ON
-#pragma config FPBDIV =     DIV_2
-
-// Device Config Bits in  DEVCFG2:	
-#pragma config FPLLIDIV =	DIV_2
-#pragma config FPLLMUL =	MUL_20
-#pragma config FPLLODIV =	DIV_1
-
 #define PB_FRQ  48000000
+#define TMR_TIME    0.001
+
 
 #define macro_enable_interrupts() \
 {  unsigned int val = 0;\
