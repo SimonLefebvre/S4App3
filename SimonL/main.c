@@ -46,7 +46,13 @@ void main(void)
     unsigned char DataRead[256] = {0};
     SPIFLASH_Read(0,DataRead,sizeof(data));
     UART_PutString(DataRead);
-    
+    UART_PutString("\n\r");
+    /****/
+    ACL_Init();
+    unsigned char rgRawVals[6] = {0, 0, 0, 0, 0, 0};    
+    int valX = 0;
+    int valY = 0;
+    int valZ = 0;
     
     // Main loop
     while(1) {
@@ -68,6 +74,20 @@ void main(void)
                 'A','N',(ADCValue/1000)+48,(ADCValue%1000/100)+48,(ADCValue%100/10)+48,(ADCValue%10)+48,'\0'};
                 LCD_WriteStringAtPos(stringToSend, 1, 0);
                 
+                
+                ACL_ReadRawValues(rgRawVals);
+                valX = (((unsigned short)rgRawVals[0]) << 4) + (rgRawVals[1] >> 4);
+                valY = (((unsigned short)rgRawVals[2]) << 4) + (rgRawVals[3] >> 4);
+                valZ = (((unsigned short)rgRawVals[4]) << 4) + (rgRawVals[5] >> 4);
+                UART_PutString("\rX:");
+                char StringACL1[6] = {(valX/10000)+48,(valX%10000/1000)+48,(valX%1000/100)+48,(valX%100/10)+48,(valX%10)+48,'\0'};
+                UART_PutString(StringACL1);
+                UART_PutString(" Y: ");
+                char StringACL2[6] = {(valY/10000)+48,(valY%10000/1000)+48,(valY%1000/100)+48,(valY%100/10)+48,(valY%10)+48,'\0'};
+                UART_PutString(StringACL2);
+                UART_PutString(" Z: ");
+                char StringACL3[6] = {(valZ/10000)+48,(valZ%10000/1000)+48,(valZ%1000/100)+48,(valZ%100/10)+48,(valZ%10)+48,'\0'};
+                UART_PutString(StringACL3);
             }
         }
     }
