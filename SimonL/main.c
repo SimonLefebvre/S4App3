@@ -30,12 +30,11 @@ void main(void)
     int count = 0;
     
     unsigned char rgRawVals[6] = {0, 0, 0, 0, 0, 0};    
-
     int16_t *valACC_XYZ = NULL;
     
     ACL_Init();   
     ACL_SetRange(1);
-    
+       
     // Main loop
     while(1) {
         if(Flag_1s)// Flag d'interruption à chaque 1 ms

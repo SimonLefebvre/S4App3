@@ -19,6 +19,7 @@
 
 #include "acl.h"
 #include "i2c.h"
+#include "accelerometre.h"
 
 
 
