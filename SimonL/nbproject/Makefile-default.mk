@@ -57,17 +57,17 @@ OBJECTDIR=build/${CND_CONF}/${IMAGE_TYPE}
 DISTDIR=dist/${CND_CONF}/${IMAGE_TYPE}
 
 # Source Files Quoted if spaced
-SOURCEFILES_QUOTED_IF_SPACED=accelerometre.c acl.c i2c.c main.c timer1.c led.c config_bits.c lcd.c adc.c sqrt.s heure.c btn.c spiflash.c uart.c
+SOURCEFILES_QUOTED_IF_SPACED=main.c timer1.c led.c config_bits.c lcd.c adc.c sqrt.s heure.c btn.c spiflash.c uart.c accelerometre.c acl.c i2c.c
 
 # Object Files Quoted if spaced
-OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/accelerometre.o ${OBJECTDIR}/acl.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/main.o ${OBJECTDIR}/timer1.o ${OBJECTDIR}/led.o ${OBJECTDIR}/config_bits.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/sqrt.o ${OBJECTDIR}/heure.o ${OBJECTDIR}/btn.o ${OBJECTDIR}/spiflash.o ${OBJECTDIR}/uart.o
-POSSIBLE_DEPFILES=${OBJECTDIR}/accelerometre.o.d ${OBJECTDIR}/acl.o.d ${OBJECTDIR}/i2c.o.d ${OBJECTDIR}/main.o.d ${OBJECTDIR}/timer1.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/config_bits.o.d ${OBJECTDIR}/lcd.o.d ${OBJECTDIR}/adc.o.d ${OBJECTDIR}/sqrt.o.d ${OBJECTDIR}/heure.o.d ${OBJECTDIR}/btn.o.d ${OBJECTDIR}/spiflash.o.d ${OBJECTDIR}/uart.o.d
+OBJECTFILES_QUOTED_IF_SPACED=${OBJECTDIR}/main.o ${OBJECTDIR}/timer1.o ${OBJECTDIR}/led.o ${OBJECTDIR}/config_bits.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/sqrt.o ${OBJECTDIR}/heure.o ${OBJECTDIR}/btn.o ${OBJECTDIR}/spiflash.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/accelerometre.o ${OBJECTDIR}/acl.o ${OBJECTDIR}/i2c.o
+POSSIBLE_DEPFILES=${OBJECTDIR}/main.o.d ${OBJECTDIR}/timer1.o.d ${OBJECTDIR}/led.o.d ${OBJECTDIR}/config_bits.o.d ${OBJECTDIR}/lcd.o.d ${OBJECTDIR}/adc.o.d ${OBJECTDIR}/sqrt.o.d ${OBJECTDIR}/heure.o.d ${OBJECTDIR}/btn.o.d ${OBJECTDIR}/spiflash.o.d ${OBJECTDIR}/uart.o.d ${OBJECTDIR}/accelerometre.o.d ${OBJECTDIR}/acl.o.d ${OBJECTDIR}/i2c.o.d
 
 # Object Files
-OBJECTFILES=${OBJECTDIR}/accelerometre.o ${OBJECTDIR}/acl.o ${OBJECTDIR}/i2c.o ${OBJECTDIR}/main.o ${OBJECTDIR}/timer1.o ${OBJECTDIR}/led.o ${OBJECTDIR}/config_bits.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/sqrt.o ${OBJECTDIR}/heure.o ${OBJECTDIR}/btn.o ${OBJECTDIR}/spiflash.o ${OBJECTDIR}/uart.o
+OBJECTFILES=${OBJECTDIR}/main.o ${OBJECTDIR}/timer1.o ${OBJECTDIR}/led.o ${OBJECTDIR}/config_bits.o ${OBJECTDIR}/lcd.o ${OBJECTDIR}/adc.o ${OBJECTDIR}/sqrt.o ${OBJECTDIR}/heure.o ${OBJECTDIR}/btn.o ${OBJECTDIR}/spiflash.o ${OBJECTDIR}/uart.o ${OBJECTDIR}/accelerometre.o ${OBJECTDIR}/acl.o ${OBJECTDIR}/i2c.o
 
 # Source Files
-SOURCEFILES=accelerometre.c acl.c i2c.c main.c timer1.c led.c config_bits.c lcd.c adc.c sqrt.s heure.c btn.c spiflash.c uart.c
+SOURCEFILES=main.c timer1.c led.c config_bits.c lcd.c adc.c sqrt.s heure.c btn.c spiflash.c uart.c accelerometre.c acl.c i2c.c
 
 
 
@@ -95,13 +95,13 @@ MP_LINKER_FILE_OPTION=
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: assemble
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/sqrt.o: sqrt.s  .generated_files/ac2d4f2b10a5adc7c5a2e02171528373e74315e.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/sqrt.o: sqrt.s  .generated_files/81ce93ed9a0a4daea9447954fb3d52e6471a87d2.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/sqrt.o 
 	${MP_CC} $(MP_EXTRA_AS_PRE)  -D__DEBUG  -D__MPLAB_DEBUGGER_PK3=1 -c -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${OBJECTDIR}/sqrt.o sqrt.s  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),--defsym=__ICD2RAM=1,--defsym=__MPLAB_DEBUG=1,--defsym=__DEBUG=1,--defsym=__MPLAB_DEBUGGER_PK3=1,--gdwarf-2,-MD="${OBJECTDIR}/sqrt.o.d" -mdfp="${DFP_DIR}"
 	
 else
-${OBJECTDIR}/sqrt.o: sqrt.s  .generated_files/17c79df957fb4a531c8e6c1c8fed8f205e0e4958.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/sqrt.o: sqrt.s  .generated_files/66b5f6bbc23cfda85bf3fb57522cd21604659f98.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/sqrt.o 
 	${MP_CC} $(MP_EXTRA_AS_PRE)  -c -mprocessor=$(MP_PROCESSOR_OPTION)  -o ${OBJECTDIR}/sqrt.o sqrt.s  -Wa,--defsym=__MPLAB_BUILD=1$(MP_EXTRA_AS_POST),--gdwarf-2,-MD="${OBJECTDIR}/sqrt.o.d" -mdfp="${DFP_DIR}"
@@ -117,162 +117,162 @@ endif
 # ------------------------------------------------------------------------------------
 # Rules for buildStep: compile
 ifeq ($(TYPE_IMAGE), DEBUG_RUN)
-${OBJECTDIR}/accelerometre.o: accelerometre.c  .generated_files/411f552d04c5c75931f392eb17db9ddea0b17d18.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/accelerometre.o.d 
-	@${RM} ${OBJECTDIR}/accelerometre.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/accelerometre.o.d" -o ${OBJECTDIR}/accelerometre.o accelerometre.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/acl.o: acl.c  .generated_files/df8d2055628218ef7ab1c102b156b851eb3b41c2.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/acl.o.d 
-	@${RM} ${OBJECTDIR}/acl.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/acl.o.d" -o ${OBJECTDIR}/acl.o acl.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/i2c.o: i2c.c  .generated_files/23f3f1d4fb8d6a29a28ec8ce80657f5bc4cf5dfa.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
-	@${MKDIR} "${OBJECTDIR}" 
-	@${RM} ${OBJECTDIR}/i2c.o.d 
-	@${RM} ${OBJECTDIR}/i2c.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/i2c.o.d" -o ${OBJECTDIR}/i2c.o i2c.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
-	
-${OBJECTDIR}/main.o: main.c  .generated_files/ba8406803b32378b03b40001034adfbca6bf4958.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/main.o: main.c  .generated_files/4ad102e504d2469aa20833702782e0c02dfdf559.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/timer1.o: timer1.c  .generated_files/1a4e169c6d5f96423c08e2fb5833831441c9aa24.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/timer1.o: timer1.c  .generated_files/f433d56421a790e552fdfe3c4bf4665813cfa420.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/timer1.o.d 
 	@${RM} ${OBJECTDIR}/timer1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/timer1.o.d" -o ${OBJECTDIR}/timer1.o timer1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/led.o: led.c  .generated_files/5bffde62e473502d210ada617c7aa0c80d726e96.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/led.o: led.c  .generated_files/8a0216de3dcd9837eca5aa54852bd856bbb281f2.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/led.o.d 
 	@${RM} ${OBJECTDIR}/led.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/led.o.d" -o ${OBJECTDIR}/led.o led.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/config_bits.o: config_bits.c  .generated_files/3dccb757dbfc6e9d3f4d9aac7cfaab957e1cb41b.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/config_bits.o: config_bits.c  .generated_files/35ef90d58163c81133aa874653e116efac61c711.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/config_bits.o.d 
 	@${RM} ${OBJECTDIR}/config_bits.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/config_bits.o.d" -o ${OBJECTDIR}/config_bits.o config_bits.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/lcd.o: lcd.c  .generated_files/966d5d6a3cada92b04ebf758a55fcac26a360968.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/lcd.o: lcd.c  .generated_files/7812d369d4c258ae048d9e08a0a260a811e2870a.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/lcd.o.d 
 	@${RM} ${OBJECTDIR}/lcd.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lcd.o.d" -o ${OBJECTDIR}/lcd.o lcd.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/adc.o: adc.c  .generated_files/78d6fa346e6622cab93797d6513a758901f3a16.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/adc.o: adc.c  .generated_files/5e05c8d6f16fff50bbd7f93e75dd94a9d3b701b6.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/adc.o.d 
 	@${RM} ${OBJECTDIR}/adc.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/adc.o.d" -o ${OBJECTDIR}/adc.o adc.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/heure.o: heure.c  .generated_files/c4c30be8a277c191c4d594988fc26e4911fd3009.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/heure.o: heure.c  .generated_files/66a64074169994a28e39a0748dbaad8574f4cc8b.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/heure.o.d 
 	@${RM} ${OBJECTDIR}/heure.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/heure.o.d" -o ${OBJECTDIR}/heure.o heure.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/btn.o: btn.c  .generated_files/dfc56546c7fc484a828df1c0e0da8bedc24bf6af.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/btn.o: btn.c  .generated_files/ebf043e87bd0c26957d17c56478fce47a908a55b.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/btn.o.d 
 	@${RM} ${OBJECTDIR}/btn.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/btn.o.d" -o ${OBJECTDIR}/btn.o btn.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/spiflash.o: spiflash.c  .generated_files/6b779659a3960cff27590c3ae58b484c4b0dcdfe.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/spiflash.o: spiflash.c  .generated_files/ffff96aad9c798f7611f2e00f644d878792d5688.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/spiflash.o.d 
 	@${RM} ${OBJECTDIR}/spiflash.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/spiflash.o.d" -o ${OBJECTDIR}/spiflash.o spiflash.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/uart.o: uart.c  .generated_files/914bdd9a19ea22de0efbac715e4ccf88061152d6.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/uart.o: uart.c  .generated_files/a6eaac16a1604a4c0230c152580a6b944508fce1.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/uart.o.d 
 	@${RM} ${OBJECTDIR}/uart.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/uart.o.d" -o ${OBJECTDIR}/uart.o uart.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-else
-${OBJECTDIR}/accelerometre.o: accelerometre.c  .generated_files/a1e68f1ce150867de99f81dee9ec37d4d8949e1b.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/accelerometre.o: accelerometre.c  .generated_files/57961c8dbe4f07da97cc4bd90faa04f10f311f59.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/accelerometre.o.d 
 	@${RM} ${OBJECTDIR}/accelerometre.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/accelerometre.o.d" -o ${OBJECTDIR}/accelerometre.o accelerometre.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/accelerometre.o.d" -o ${OBJECTDIR}/accelerometre.o accelerometre.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/acl.o: acl.c  .generated_files/2e9bbfa37cefcf062d2e08316c62d28995d90e6f.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/acl.o: acl.c  .generated_files/df0836d01e086e47797bce81d47bdff2f8dc37a4.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/acl.o.d 
 	@${RM} ${OBJECTDIR}/acl.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/acl.o.d" -o ${OBJECTDIR}/acl.o acl.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/acl.o.d" -o ${OBJECTDIR}/acl.o acl.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/i2c.o: i2c.c  .generated_files/e189835bb6b6d6a49642905345b924b7bb1b62d6.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/i2c.o: i2c.c  .generated_files/cf1e7eb51a62e7d2ff34229bfcf0b9d90c8ac5d8.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/i2c.o.d 
 	@${RM} ${OBJECTDIR}/i2c.o 
-	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/i2c.o.d" -o ${OBJECTDIR}/i2c.o i2c.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	${MP_CC}  $(MP_EXTRA_CC_PRE) -g -D__DEBUG -D__MPLAB_DEBUGGER_PK3=1  -fframe-base-loclist  -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/i2c.o.d" -o ${OBJECTDIR}/i2c.o i2c.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/main.o: main.c  .generated_files/24380e56e27686158877ca1e13f11cd62b777214.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+else
+${OBJECTDIR}/main.o: main.c  .generated_files/7f0c4b2ed8b8a2f0b15f1419d6e4166a1bbbef53.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/main.o.d 
 	@${RM} ${OBJECTDIR}/main.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/main.o.d" -o ${OBJECTDIR}/main.o main.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/timer1.o: timer1.c  .generated_files/eb31de5c50be015fd89836dda038cdf63fd718c4.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/timer1.o: timer1.c  .generated_files/bba72619cae841d2c7742fcc46f9b3ec5da6c042.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/timer1.o.d 
 	@${RM} ${OBJECTDIR}/timer1.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/timer1.o.d" -o ${OBJECTDIR}/timer1.o timer1.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/led.o: led.c  .generated_files/54fc7ab11c370492c96a7a59245effaff5875cbf.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/led.o: led.c  .generated_files/80eafa6ff85e95fa434035cdb5e74bc75fdc766a.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/led.o.d 
 	@${RM} ${OBJECTDIR}/led.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/led.o.d" -o ${OBJECTDIR}/led.o led.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/config_bits.o: config_bits.c  .generated_files/397b20e10725d6a32515f577a057437d2e164b82.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/config_bits.o: config_bits.c  .generated_files/a8e8232fe949863881df672f6af6285bd7cdcdeb.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/config_bits.o.d 
 	@${RM} ${OBJECTDIR}/config_bits.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/config_bits.o.d" -o ${OBJECTDIR}/config_bits.o config_bits.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/lcd.o: lcd.c  .generated_files/1399d6f6a983f956e820cf95e81639cf4fbe01a4.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/lcd.o: lcd.c  .generated_files/eb3d30b6398b0b17662c4883a8a205479286611b.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/lcd.o.d 
 	@${RM} ${OBJECTDIR}/lcd.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/lcd.o.d" -o ${OBJECTDIR}/lcd.o lcd.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/adc.o: adc.c  .generated_files/d659e89e76b9339b0b60a6fb8da62587268b1c4c.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/adc.o: adc.c  .generated_files/aec96fe815c2e1d9b0e8a281deca39b30d6f2a46.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/adc.o.d 
 	@${RM} ${OBJECTDIR}/adc.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/adc.o.d" -o ${OBJECTDIR}/adc.o adc.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/heure.o: heure.c  .generated_files/99e8937ef516aa175aa7400e9840851c388302b2.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/heure.o: heure.c  .generated_files/3d651882e91222c1e6d658839d95ad7cd0c3b7d8.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/heure.o.d 
 	@${RM} ${OBJECTDIR}/heure.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/heure.o.d" -o ${OBJECTDIR}/heure.o heure.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/btn.o: btn.c  .generated_files/a15bfdd0dc4071991d1432928f47527b5e4a81f.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/btn.o: btn.c  .generated_files/e2b5f9217cc1abdb066278468594e37823aa7be8.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/btn.o.d 
 	@${RM} ${OBJECTDIR}/btn.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/btn.o.d" -o ${OBJECTDIR}/btn.o btn.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/spiflash.o: spiflash.c  .generated_files/28b6b0b2402cb3b6552797f333dca390c1241e86.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/spiflash.o: spiflash.c  .generated_files/6321803f17d0db6d9019b7064e9dcb6dd86e2dac.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/spiflash.o.d 
 	@${RM} ${OBJECTDIR}/spiflash.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/spiflash.o.d" -o ${OBJECTDIR}/spiflash.o spiflash.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
-${OBJECTDIR}/uart.o: uart.c  .generated_files/f627c18fe76b7e1b6a44dccda41b0140e2e50b31.flag .generated_files/67a5f30e4ebdcfe697f5c37a320db724497a282.flag
+${OBJECTDIR}/uart.o: uart.c  .generated_files/d0080a891e1ecdb61a81e219dfd605d71f72388c.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
 	@${MKDIR} "${OBJECTDIR}" 
 	@${RM} ${OBJECTDIR}/uart.o.d 
 	@${RM} ${OBJECTDIR}/uart.o 
 	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/uart.o.d" -o ${OBJECTDIR}/uart.o uart.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/accelerometre.o: accelerometre.c  .generated_files/6e3340f38a9887fe6a1bf8bb495f0bb2e536abf9.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/accelerometre.o.d 
+	@${RM} ${OBJECTDIR}/accelerometre.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/accelerometre.o.d" -o ${OBJECTDIR}/accelerometre.o accelerometre.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/acl.o: acl.c  .generated_files/4e5fb16851351839aa1b010a5bfe800447a78d5.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/acl.o.d 
+	@${RM} ${OBJECTDIR}/acl.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/acl.o.d" -o ${OBJECTDIR}/acl.o acl.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
+	
+${OBJECTDIR}/i2c.o: i2c.c  .generated_files/3997ea61379737f500bb3fa69d56864e5ca6c378.flag .generated_files/bfcd45b2758ca38abd0021b9cecd4a81acedb1bf.flag
+	@${MKDIR} "${OBJECTDIR}" 
+	@${RM} ${OBJECTDIR}/i2c.o.d 
+	@${RM} ${OBJECTDIR}/i2c.o 
+	${MP_CC}  $(MP_EXTRA_CC_PRE)  -g -x c -c -mprocessor=$(MP_PROCESSOR_OPTION)  -MP -MMD -MF "${OBJECTDIR}/i2c.o.d" -o ${OBJECTDIR}/i2c.o i2c.c    -DXPRJ_default=$(CND_CONF)  -legacy-libc  $(COMPARISON_BUILD)  -mdfp="${DFP_DIR}"  
 	
 endif
 
