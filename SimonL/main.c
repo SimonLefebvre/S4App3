@@ -8,9 +8,10 @@
 
 #include "S4App3.h"
 #include "heure.h"
+#include <stdbool.h>
 /*      VARRIABLES GLOBALES     */
 
-
+bool flag_1s = false;
 
 /*      VARRIABLES GLOBALES     */
 
@@ -29,6 +30,12 @@ void main(void)
     
     // Main loop
     while(1) {
-        heure();
+        flag_1s = heure();
+        
+        if(flag_1s)
+        {
+            flag_1s = false;
+            // Code à effectuer chaque seconde ici
+        }
     }
 }

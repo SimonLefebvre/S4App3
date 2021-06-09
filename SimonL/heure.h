@@ -18,7 +18,9 @@
 #ifndef _HEURE_H    /* Guard against multiple inclusion */
 #define _HEURE_H
 
-void heure();
+#include <stdbool.h>
+
+bool heure();
 
 #endif /* _HEURE_H */
 

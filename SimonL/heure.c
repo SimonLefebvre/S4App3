@@ -24,6 +24,7 @@
 /* This section lists the other files that are included in this file.
  */
 #include "S4App3.h"
+#include "heure.h"
 /* TODO:  Include other files here if needed. */
 
 
@@ -33,7 +34,7 @@
 /* ************************************************************************** */
 /* ************************************************************************** */
 
-int Flag_1s = 0;
+int Flag_1ms = 0;
 char heures[2] = {0};
 char minutes[2] = {0};
 char secondes[2] = {0};
@@ -79,11 +80,13 @@ static void updateDisplay()
     LCD_WriteStringAtPos(stringToSend, 1, 0);
 }
 
-void heure()
+bool heure()
 {
-    if(Flag_1s)// Flag d'interruption à chaque 1 ms
+    bool second_elapsed = false;
+    
+    if(Flag_1ms)// Flag d'interruption à chaque 1 ms
     {
-        Flag_1s = 0;
+        Flag_1ms = 0;
         
         if(BTN_GetValue(BtnC) == ButtonPressed && btnState == NoButtonPressed)
         {
@@ -137,9 +140,11 @@ void heure()
                 count = 0;
                 secondes[0]++;
                 updateDisplay();
+                second_elapsed = true;
             }
         }
     }
+    return second_elapsed;
 }
 
 
