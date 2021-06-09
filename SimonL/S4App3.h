@@ -19,6 +19,8 @@
 #include "btn.h"
 #include "acl.h"
 #include "i2c.h"
+#include "uart.h"
+#include "spiflash.h"
 #include "accelerometre.h"
 
 

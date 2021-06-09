@@ -29,6 +29,8 @@ void main(void)
     LCD_WriteStringAtPos("S4App3 ", 0, 0); 
     BTN_Init();
     ACL_Init();   
+    SPIFLASH_Init();
+    UART_Init(9600);
     ACL_SetRange(1);
     
     // Main loop
