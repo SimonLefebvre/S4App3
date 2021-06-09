@@ -98,13 +98,13 @@ void main(void)
                     valZ &= ~(1<<11);
                 }
                 UART_PutString("\rX:");
-                char StringACL1[6] = {(valX/10000)+48,(valX%10000/1000)+48,(valX%1000/100)+48,(valX%100/10)+48,(valX%10)+48,'\0'};
+                char StringACL1[6] = sprintf("%d",valX);
                 UART_PutString(StringACL1);
                 UART_PutString(" Y: ");
-                char StringACL2[6] = {(valY/10000)+48,(valY%10000/1000)+48,(valY%1000/100)+48,(valY%100/10)+48,(valY%10)+48,'\0'};
+                char StringACL2[6] = sprintf("%d",valY);
                 UART_PutString(StringACL2);
                 UART_PutString(" Z: ");
-                char StringACL3[6] = {(valZ/10000)+48,(valZ%10000/1000)+48,(valZ%1000/100)+48,(valZ%100/10)+48,(valZ%10)+48,'\0'};
+                char StringACL3[6] = sprintf("%d",valZ);
                 UART_PutString(StringACL3);
             }
         }
