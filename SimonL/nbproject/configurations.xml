@@ -38,6 +38,7 @@
       <itemPath>accelerometre.c</itemPath>
       <itemPath>acl.c</itemPath>
       <itemPath>i2c.c</itemPath>
+      <itemPath>flashData.c</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"

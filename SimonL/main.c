@@ -7,8 +7,7 @@
 
 
 #include "S4App3.h"
-#include "heure.h"
-#include <stdbool.h>
+
 /*      VARRIABLES GLOBALES     */
 
 bool flag_1s = false;
@@ -18,8 +17,7 @@ bool flag_1s = false;
 extern int sqrt_babylon(int value, unsigned int precision);
 extern unsigned int magnitude(int ax, int ay, int az);
 
-unsigned char rgRawVals[6] = {0, 0, 0, 0, 0, 0};    
-int16_t *valACC_XYZ = NULL;
+
 
 void main(void)
 {
@@ -32,6 +30,9 @@ void main(void)
     SPIFLASH_Init();
     UART_Init(9600);
     ACL_SetRange(1);
+    ADC_Init();
+ 
+    
     
     // Main loop
     while(1) {
@@ -40,6 +41,7 @@ void main(void)
         if(flag_1s)
         {
             flag_1s = false;
+            testFlash();
             // Code à effectuer chaque seconde ici
         }
     }
