@@ -16,7 +16,7 @@
 #include "led.h"
 #include "lcd.h"
 #include "adc.h"
-
+#include "btn.h"
 
 
 void Timer1Init(void);
