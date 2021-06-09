@@ -17,19 +17,11 @@
 #include "lcd.h"
 #include "adc.h"
 #include "btn.h"
+#include "acl.h"
+#include "i2c.h"
+#include "accelerometre.h"
 
 
 void Timer1Init(void);
-
-
-
-
-
-
-
-
-
-
-
 
 #endif /* S4APP3_H */
