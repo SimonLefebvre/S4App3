@@ -15,8 +15,8 @@ int Flag_1s = 0;
 
 /*      VARRIABLES GLOBALES     */
 
-
-
+extern int sqrt_babylon(int value, unsigned int precision);
+extern unsigned int magnitude(int ax, int ay, int az);
 
 void main(void)
 {
@@ -32,6 +32,12 @@ void main(void)
     unsigned char rgRawVals[6] = {0, 0, 0, 0, 0, 0};    
     int16_t *valACC_XYZ = NULL;
     
+    int resultMagnitude = 0;
+    
+    int16_t test1 = 0;
+    int16_t test2 = 0;
+    int16_t test3 = 0;
+        
     ACL_Init();   
     ACL_SetRange(1);
        
@@ -50,11 +56,18 @@ void main(void)
                 if(minutes[1] > 5){minutes[1] = 0; heures[0] ++;}
                 if(heures[0] > 9){heures[0] = 0; heures[1] ++;}
                 if(heures[0] > 3 && heures[1] > 1){heures[0] = 0; heures[1] =0;}
-                char stringToSend[9] = {heures[1]+48,heures[0]+48,':',minutes[1]+48,minutes[0]+48,':',secondes[1]+48,secondes[0]+48,'\0'};
-                LCD_WriteStringAtPos(stringToSend, 1, 0);
                 
                 ACL_ReadRawValues(rgRawVals);
                 valACC_XYZ = Acc_val_16bits(rgRawVals);
+                
+                test1 = valACC_XYZ[0];
+                test2 = valACC_XYZ[1];
+                test3 = valACC_XYZ[2];
+                        
+                resultMagnitude = magnitude(valACC_XYZ[0], valACC_XYZ[1], valACC_XYZ[2]);
+                
+                char stringToSend[9] = {heures[1]+48,heures[0]+48,':',minutes[1]+48,minutes[0]+48,':',secondes[1]+48,secondes[0]+48,'\0'};
+                LCD_WriteStringAtPos(stringToSend, 1, 0);
                 
             }
         }
