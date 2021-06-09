@@ -17,6 +17,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "accelerometre.h"
 
 int16_t valeurAccXYZ[3] = {0, 0, 0};
 

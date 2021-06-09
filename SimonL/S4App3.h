@@ -24,9 +24,11 @@
 #include "spiflash.h"
 #include "accelerometre.h"
 #include "heure.h"
+#include "calculCaptures.h"
 
 
 void Timer1Init(void);
 void testFlash(void);
 uint32_t SendToFlash(uint32_t secondes,int16_t Ax,int16_t Ay,int16_t Az,uint16_t sqrt,uint16_t ADC, uint32_t Address);
+void ReadFlash(uint32_t* secondes,int16_t* Ax,int16_t* Ay,int16_t* Az,uint16_t* sqrt,uint16_t* ADC, uint32_t Address, uint16_t Lenght);
 #endif /* S4APP3_H */
