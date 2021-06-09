@@ -30,11 +30,11 @@ void main(void)
     int count = 0;
     
     unsigned char rgRawVals[6] = {0, 0, 0, 0, 0, 0};    
-    signed short valX = 0;
-    signed short valY = 0;
-    signed short valZ = 0;
+
+    int16_t *valACC_XYZ = NULL;
     
     ACL_Init();   
+    ACL_SetRange(1);
     
     // Main loop
     while(1) {
@@ -55,27 +55,8 @@ void main(void)
                 LCD_WriteStringAtPos(stringToSend, 1, 0);
                 
                 ACL_ReadRawValues(rgRawVals);
-                valX = (((signed short)rgRawVals[0]) << 4) + (rgRawVals[1] >> 4);
-                valY = (((signed short)rgRawVals[2]) << 4) + (rgRawVals[3] >> 4);
-                valZ = (((signed short)rgRawVals[4]) << 4) + (rgRawVals[5] >> 4);           
+                valACC_XYZ = Acc_val_16bits(rgRawVals);
                 
-                if(valX & 1<<11)
-                {
-                    valX |= (1<<15);
-                    valX &= ~(1<<11);
-                }
-                
-                if(valY & 1<<11)
-                {
-                    valY |= (1<<15);
-                    valY &= ~(1<<11);
-                }
-                
-                if(valZ & 1<<11)
-                {
-                    valZ |= (1<<15);
-                    valZ &= ~(1<<11);
-                }
             }
         }
     }
