@@ -3,12 +3,11 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/E:/git/S4App3/SimonL/sqrt.s</file>
-            <file>file:/E:/git/S4App3/SimonL/main.c</file>
-            <file>file:/E:/git/S4App3/SimonL/timer1.c</file>
-            <file>file:/E:/git/S4App3/SimonL/adc.c</file>
-            <file>file:/E:/git/S4App3/SimonL/led.c</file>
-            <file>file:/E:/git/S4App3/SimonL/config_bits.c</file>
+            <file>file:/C:/Document/Github_file/S4App3/SimonL/config.h</file>
+            <file>file:/C:/Document/Github_file/S4App3/SimonL/sqrt.s</file>
+            <file>file:/C:/Document/Github_file/S4App3/SimonL/main.c</file>
+            <file>file:/C:/Document/Github_file/S4App3/SimonL/S4App3.h</file>
+            <file>file:/C:/Document/Github_file/S4App3/SimonL/timer1.c</file>
         </group>
     </open-files>
 </project-private>
