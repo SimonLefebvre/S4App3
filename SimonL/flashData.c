@@ -45,6 +45,9 @@ void testFlash(void)
         
         ReadFlash(secondes, Ax, Ay, Az, sqrt, ADC, 0, 250); 
         
+        SPIFLASH_Erase4k(0);//For the next write to be successfull
+        FlashAddressPointer = 0;
+        
         donneesAx = captureCalculSigned(Ax); 
         donneesAy = captureCalculSigned(Ay); 
         donneesAz = captureCalculSigned(Az); 
@@ -66,18 +69,18 @@ uint32_t SendToFlash(uint32_t secondes,int16_t Ax,int16_t Ay,int16_t Az,uint16_t
 
 void ReadFlash(uint32_t* secondes,int16_t* Ax,int16_t* Ay,int16_t* Az,uint16_t* sqrt,uint16_t* ADC, uint32_t Address, uint16_t Lenght)
 {
-        unsigned char DataRead[256] = {0};
-        SPIFLASH_Read(0, DataRead, 250);
-        int i = 0;
-        for(;i<15;i++)
-        {
-            secondes[i] = DataRead[0 + (i*14)]<<24 | DataRead[1 + (i*14)]<<16 | DataRead[2 + (i*14)]<<8 | DataRead[3 + (i*14)];
-            Ax[i] = DataRead[4 + (i*14)]<<8 | DataRead[5 + (i*14)]; 
-            Ay[i] = DataRead[6 + (i*14)]<<8 | DataRead[7 + (i*14)]; 
-            Az[i] = DataRead[8 + (i*14)]<<8 | DataRead[9 + (i*14)]; 
-            sqrt[i] = DataRead[10 + (i*14)]<<8 | DataRead[11 + (i*14)]; 
-            ADC[i] = DataRead[12 + (i*14)]<<8 | DataRead[13 + (i*14)]; 
-        }
+    unsigned char DataRead[256] = {0};
+    SPIFLASH_Read(Address, DataRead, Lenght);
+    int i = 0;
+    for(;i<15;i++)
+    {
+        secondes[i] = DataRead[0 + (i*14)]<<24 | DataRead[1 + (i*14)]<<16 | DataRead[2 + (i*14)]<<8 | DataRead[3 + (i*14)];
+        Ax[i] = DataRead[4 + (i*14)]<<8 | DataRead[5 + (i*14)]; 
+        Ay[i] = DataRead[6 + (i*14)]<<8 | DataRead[7 + (i*14)]; 
+        Az[i] = DataRead[8 + (i*14)]<<8 | DataRead[9 + (i*14)]; 
+        sqrt[i] = DataRead[10 + (i*14)]<<8 | DataRead[11 + (i*14)]; 
+        ADC[i] = DataRead[12 + (i*14)]<<8 | DataRead[13 + (i*14)]; 
+    }
 }
 
 

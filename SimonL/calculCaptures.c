@@ -29,7 +29,7 @@ uint16_t tbFiltreDonneesUnsigned[3] = {0, 0, 0};
 
 int16_t captureMinSigned(int16_t *tbDonnees)
 {
-    int16_t valeurMin = 0;
+    int16_t valeurMin = 0x7FFF;
     for(int i=0; i<16; i++)
     {
         if(valeurMin > tbDonnees[i])
@@ -65,7 +65,7 @@ int16_t captureMoyenSigned(int16_t *tbDonnees)
 
 int16_t *captureCalculSigned(int16_t *tbDonnees)
 {       
-    for(int i=0; i<sizeof(tbFiltreDonneesSigned); i++)
+    for(int i=0; i<16; i++)
     {
         tbFiltreDonneesSigned[i] = 0;
     }
@@ -82,8 +82,8 @@ int16_t *captureCalculSigned(int16_t *tbDonnees)
 //==================================================
 uint16_t captureMinUnsigned(uint16_t *tbDonnees)
 {
-    uint16_t valeurMin = 0;
-    for(int i=0; i<sizeof(tbDonnees); i++)
+    uint16_t valeurMin = 0xFFFF;
+    for(int i=0; i<16; i++)
     {
         if(valeurMin > tbDonnees[i])
         {
@@ -96,9 +96,9 @@ uint16_t captureMinUnsigned(uint16_t *tbDonnees)
 uint16_t captureMaxUnsigned(uint16_t *tbDonnees)
 {
     uint16_t valeurMax = 0;
-    for(int i=0; i<sizeof(tbDonnees); i++)
+    for(int i=0; i<16; i++)
     {
-        if(valeurMax > tbDonnees[i])
+        if(valeurMax < tbDonnees[i])
         {
             valeurMax = tbDonnees[i];
         }
@@ -109,16 +109,16 @@ uint16_t captureMaxUnsigned(uint16_t *tbDonnees)
 uint16_t captureMoyenUnsigned(uint16_t *tbDonnees)
 {
     uint32_t valeurMoyenne = 0;
-    for(int i=0; i<sizeof(tbDonnees); i++)
+    for(int i=0; i<16; i++)
     {
         valeurMoyenne = valeurMoyenne + tbDonnees[i];
     }
-    return (valeurMoyenne/sizeof(tbDonnees));
+    return (valeurMoyenne/16);
 }
 
 uint16_t *captureCalculUnsigned(uint16_t *tbDonnees)
 {   
-    for(int i=0; i<sizeof(tbFiltreDonneesUnsigned); i++)
+    for(int i=0; i<16; i++)
     {
         tbFiltreDonneesUnsigned[i] = 0;
     }

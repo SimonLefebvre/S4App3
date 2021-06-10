@@ -31,7 +31,6 @@ void main(void)
     UART_Init(9600);
     ACL_SetRange(1);
     ADC_Init();
- 
     
     
     // Main loop
