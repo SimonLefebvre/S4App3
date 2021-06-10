@@ -43,11 +43,12 @@ void main(void)
     ACL_SetRange(1);
     initPmodGpios();
     ADC_Init();
+    SWT_Init();
     SPIFLASH_Erase4k(0);
     UART_PutString("\n\rS4APP3");
     UART_PutString("\n\rSimon Lefebvre : lefs3303");
-    UART_PutString("\n\rXavier Dufour  : xduf");
-    UART_PutString("\n\rJeremy Chenard : jche");
+    UART_PutString("\n\rXavier Dufour  : dufx2901");
+    UART_PutString("\n\rJeremy Chenard : chej2806");
     
     // Main loop
     while(1) 

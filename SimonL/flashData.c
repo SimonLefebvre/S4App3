@@ -23,6 +23,7 @@ void testFlash(void)
 {
     static uint32_t magnitude_val = 0;
     static uint32_t SecondesCpt = 0;
+    static uint32_t seizecompte = 0;
     static uint32_t FlashAddressPointer = 0;
     static uint16_t ADCValue = 0;
     static unsigned char rgRawVals[6] = {0, 0, 0, 0, 0, 0};    
@@ -34,6 +35,8 @@ void testFlash(void)
     static uint16_t donneesADC[3] = {0};
     
     char buffer [50];
+    
+    seizecompte ++;
     SecondesCpt ++;
     ADCValue = ADC_AnalogRead(2);
     ACL_ReadRawValues(rgRawVals);
@@ -44,9 +47,11 @@ void testFlash(void)
     //sprintf(buffer,"\n\rSending:0x%d",valACC_XYZ[0]);UART_PutString(buffer);//For testing
     FlashAddressPointer = SendToFlash(SecondesCpt, valACC_XYZ[0], valACC_XYZ[1], valACC_XYZ[2], magnitude_val, ADCValue, FlashAddressPointer);//write
     //ReadFlash(secondes, Ax, Ay, Az, sqrt, ADC, 0, FlashAddressPointer); //For testing
-    if(SecondesCpt > 15)
+    
+    
+    if(seizecompte > 15)
     {
-        SecondesCpt = 0;
+        seizecompte = 0;
         
         ReadFlash(secondes, Ax, Ay, Az, sqrt, ADC, 0, 250); 
         
@@ -58,8 +63,8 @@ void testFlash(void)
         captureCalculSigned(Az,donneesAz); 
         captureCalculSigned(sqrt,donneesSqrt);
         captureCalculSigned(ADC,donneesADC);
-        SendUartData(donneesAx,donneesAy,donneesAz,donneesSqrt,donneesADC);
-        printAllData(Ax, Ay, Az, sqrt, ADC);
+        SendUartData(secondes[15],donneesAx,donneesAy,donneesAz,donneesSqrt,donneesADC);
+        if(SWT_GetValue(0)) printAllData(Ax, Ay, Az, sqrt, ADC);//Print to test functions min, max, moyenne, R&Wspi flash
         
         
         SendToServer(secondes, donneesAx, donneesAy, donneesAz, donneesSqrt, donneesADC, Ax, Ay, Az, sqrt, ADC);
@@ -102,7 +107,7 @@ void ReadFlash(uint32_t* secondes,int16_t* Ax,int16_t* Ay,int16_t* Az,uint16_t* 
         sprintf(buffer,"\n\rData#%d:0x%x",i,DataRead[i]);UART_PutString(buffer);
     }*/
     
-    for(int i = 0;i<15;i++)
+    for(int i = 0;i<16;i++)
     {
         secondes[i] = DataRead[0 + (i*14)]<<24 | DataRead[1 + (i*14)]<<16 | DataRead[2 + (i*14)]<<8 | DataRead[3 + (i*14)];
         Ax[i] = DataRead[4 + (i*14)]<<8 | DataRead[5 + (i*14)]; 
@@ -124,25 +129,36 @@ void printAllData(int16_t* Ax,int16_t* Ay,int16_t* Az,uint16_t* sqrt,uint16_t* A
     }
     
      UART_PutString("\n\rAy");
-    for(int i =0;i<15;i++)
+    for(int i =0;i<16;i++)
     {
         sprintf(buffer,"\n\r%d:0d%d",i,Ay[i]);UART_PutString(buffer);
     }
     
       UART_PutString("\n\rAz");
-    for(int i =0;i<15;i++)
+    for(int i =0;i<16;i++)
     {
         sprintf(buffer,"\n\r%d:0d%d",i,Az[i]);UART_PutString(buffer);
+    }
+      UART_PutString("\n\rsqrt");
+    for(int i =0;i<16;i++)
+    {
+        sprintf(buffer,"\n\r%d:0d%d",i,sqrt[i]);UART_PutString(buffer);
+    }
+      UART_PutString("\n\rADC");
+    for(int i =0;i<16;i++)
+    {
+        sprintf(buffer,"\n\r%d:0d%d",i,ADC[i]);UART_PutString(buffer);
     }
     
 }
 
-void SendUartData(int16_t* Ax, int16_t* Ay, int16_t* Az, uint16_t* sqrt, uint16_t* ADC)
+void SendUartData(uint32_t secondes, int16_t* Ax, int16_t* Ay, int16_t* Az, uint16_t* sqrt, uint16_t* ADC)
 {
+    char buffer [50];
     UART_PutString("\n\n\r-------------------------------------------");
     UART_PutString("\n\n\rNEW VALUES");
-    UART_PutString("\n\n\rTemps d'envoie: ");
-    char buffer [50];
+    UART_PutString("\n\n\rTemps d'envoie:");sprintf(buffer," %d secondes",secondes);UART_PutString(buffer);
+    
     UART_PutString("\n\n\r    Accelerometre");
     
     UART_PutString("\n\rAx min:0d");sprintf(buffer,"%d",Ax[0]);UART_PutString(buffer);
