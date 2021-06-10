@@ -259,14 +259,15 @@ void SendToServer(uint32_t* secondes, int16_t* AxCal, int16_t* AyCal, int16_t* A
         parallelPortSend(ADC[i] & 0X0F);   
     }
     
-    //Envoie du CHK
-        //Envoie du CHK
+    //Calcul du checksum
+    //Checksum de l'entête
     checksum = 0x05;
     
+    //Checksum de la longeur du paquet
     checksum ^= (0x10); 
     checksum ^= (0x02); 
 
-    //Envoie de l'étiquette de temps
+    //Checksum de l'étiquette de temps
     checksum ^=((secondes[15]>>28) & 0X0F); 
     checksum ^=((secondes[15]>>24) & 0X0F);
     checksum ^=((secondes[15]>>20) & 0X0F); 
@@ -276,7 +277,7 @@ void SendToServer(uint32_t* secondes, int16_t* AxCal, int16_t* AyCal, int16_t* A
     checksum ^=((secondes[15]>>4) & 0X0F);
     checksum ^=(secondes[15] & 0X0F); 
     
-    //Envoie des données calculées
+    //Checksum des données calculées
     for(int i=0; i<3; i++)
     {
         checksum ^=(AxCal[i]>>12); 
@@ -305,7 +306,7 @@ void SendToServer(uint32_t* secondes, int16_t* AxCal, int16_t* AyCal, int16_t* A
         checksum ^=(ADCCal[i] & 0X0F);
     }
     
-    //Envoie des 16 captures
+    //Checksum des 16 captures
     for(int i=0; i<16; i++)
     {
         checksum ^=((secondes[i]>>28) & 0X0F); 
@@ -343,5 +344,6 @@ void SendToServer(uint32_t* secondes, int16_t* AxCal, int16_t* AyCal, int16_t* A
         checksum ^=(ADC[i] & 0X0F);   
     }
     
+    //Envoie du CHK
     parallelPortSend(checksum); 
 }
