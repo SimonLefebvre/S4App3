@@ -27,7 +27,7 @@ static void initPmodGpios()
     PMODS_InitPin(0, 3, 0, 0, 0); // JA3 - PORTC4
     PMODS_InitPin(0, 4, 0, 0, 0); // JA4 - PORTG6
     PMODS_InitPin(0, 8, 0, 0, 0); // JA8 - PORTG7
-    PMODS_InitPin(0, 9, 1, 0, 0); // JA9 - PORTG8
+    PMODS_InitPin(0, 9, 1, 0, 1); // JA9 - PORTG8
 }
 
 void main(void)

@@ -45,7 +45,8 @@ parallelPortSend:
     
     /* Wait for ACK */
     ackloop:
-    lw $t2, PORTG($0)	    # load PORTG current value
+    /*lw $t2, PORTG($0)	    # load PORTG current value*/
+    lw $t2, PORTB($0)	    # load PORTB for right BTN
     andi $t2, $t2, 0x0100   # clear every bit except ACK (PORTG8)
     beqz $t2, ackloop	    # test if ACK bit is set, loop if it isn't
     nop
