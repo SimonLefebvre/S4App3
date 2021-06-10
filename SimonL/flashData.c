@@ -179,7 +179,7 @@ void SendToServer(uint32_t* secondes, int16_t* AxCal, int16_t* AyCal, int16_t* A
     parallelPortSend(0x05);
     
     //Envoie de la longeur du paquet
-    parallelPortSend(0x10); 
+    parallelPortSend(0x08); // 0b0001        0000
     parallelPortSend(0x02); 
 
     //Envoie de l'étiquette de temps
@@ -264,7 +264,7 @@ void SendToServer(uint32_t* secondes, int16_t* AxCal, int16_t* AyCal, int16_t* A
     checksum = 0x05;
     
     //Checksum de la longeur du paquet
-    checksum ^= (0x10); 
+    checksum ^= (0x08); 
     checksum ^= (0x02); 
 
     //Checksum de l'étiquette de temps
@@ -345,5 +345,5 @@ void SendToServer(uint32_t* secondes, int16_t* AxCal, int16_t* AyCal, int16_t* A
     }
     
     //Envoie du CHK
-    parallelPortSend(checksum); 
+    parallelPortSend(checksum & 0x0F); 
 }
