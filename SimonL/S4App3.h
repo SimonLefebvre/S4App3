@@ -22,6 +22,7 @@
 #include "i2c.h"
 #include "uart.h"
 #include "spiflash.h"
+#include "pmods.h"
 #include "accelerometre.h"
 #include "heure.h"
 #include "calculCaptures.h"

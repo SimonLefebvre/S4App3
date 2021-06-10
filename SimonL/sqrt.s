@@ -26,11 +26,14 @@ sqrt_babylon:
     
     /* Initial guess calculation */
 find_msb:
-    sll $t0, $t6, $t5 # shift left MSB comparison value
-    add $t5, $t5, 1 # p++ 
-    blt $t0, $a0, find_msb # Loop until MSB greater than value
+    sll $t0, $t6, $t5	    # shift left MSB comparison value
+    add $t5, $t5, 1	    # p++ 
+    beq $t5, 31, msb_found  # escape loop if counter reaches 31 (bit 30 is MSB)
+    nop
+    blt $t0, $a0, find_msb  # Loop until MSB greater than value
     nop
     
+msb_found:    
     /* MSB position found */ 
     sub $t5, $t5, 1 # Remove excess count from position counter
     div $t0, $t5, 2 # q=p/2 
