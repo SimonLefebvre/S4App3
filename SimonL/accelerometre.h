@@ -23,7 +23,7 @@
 extern "C" {
 #endif
 
-    int16_t *Acc_val_16bits(unsigned char *rgRawVals);
+    void Acc_val_16bits(unsigned char *rgRawVals, int16_t *valeurAccXYZ);
 
 
     /* Provide C++ Compatibility */

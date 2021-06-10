@@ -28,13 +28,18 @@ void main(void)
     BTN_Init();
     ACL_Init();   
     SPIFLASH_Init();
-    UART_Init(9600);
+    UART_Init(115200);
     ACL_SetRange(1);
     ADC_Init();
-    
+    SPIFLASH_Erase4k(0);
+    UART_PutString("\n\rS4APP3");
+    UART_PutString("\n\rSimon Lefebvre : lefs3303");
+    UART_PutString("\n\rXavier Dufour  : xduf");
+    UART_PutString("\n\rJeremy Chenard : jche");
     
     // Main loop
-    while(1) {
+    while(1) 
+    {
         flag_1s = heure();
         
         if(flag_1s)
