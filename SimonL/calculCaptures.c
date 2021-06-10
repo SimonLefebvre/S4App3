@@ -20,8 +20,6 @@
 #include "calculCaptures.h"
 #include "S4App3.h"
 
-int16_t tbFiltreDonneesSigned[3] = {0, 0, 0};
-uint16_t tbFiltreDonneesUnsigned[3] = {0, 0, 0};
 
 //==================================================
 // Valeur Unsigned
@@ -63,18 +61,15 @@ int16_t captureMoyenSigned(int16_t *tbDonnees)
     return (valeurMoyenne/16);
 }
 
-int16_t *captureCalculSigned(int16_t *tbDonnees)
+void captureCalculSigned(int16_t *tbDonnees, int16_t* tbFiltreDonneesSigned)
 {       
     for(int i=0; i<16; i++)
     {
         tbFiltreDonneesSigned[i] = 0;
     }
-    
     tbFiltreDonneesSigned[0] = captureMinSigned(tbDonnees);
     tbFiltreDonneesSigned[1] = captureMaxSigned(tbDonnees);
     tbFiltreDonneesSigned[2] = captureMoyenSigned(tbDonnees);
-            
-    return tbFiltreDonneesSigned;
 }
 
 //==================================================
@@ -116,7 +111,7 @@ uint16_t captureMoyenUnsigned(uint16_t *tbDonnees)
     return (valeurMoyenne/16);
 }
 
-uint16_t *captureCalculUnsigned(uint16_t *tbDonnees)
+void captureCalculUnsigned(uint16_t* tbDonnees, uint16_t* tbFiltreDonneesUnsigned)
 {   
     for(int i=0; i<16; i++)
     {
@@ -127,7 +122,6 @@ uint16_t *captureCalculUnsigned(uint16_t *tbDonnees)
     tbFiltreDonneesUnsigned[1] = captureMaxUnsigned(tbDonnees);
     tbFiltreDonneesUnsigned[2] = captureMoyenUnsigned(tbDonnees);
             
-    return tbFiltreDonneesUnsigned;
 }
 
 
